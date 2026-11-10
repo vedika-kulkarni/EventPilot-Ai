@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#070B1A" />
+    <meta
+      name="description"
+      content="EventPilot AI — six collaborating AI agents turn a plain-language event request into a costed, weather-checked, policy-validated plan that a human approves before anything is booked."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("ep_theme");
+          if (!t) t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (e) { document.documentElement.setAttribute("data-theme", "light"); }
+      })();
+    </script>
+    <title>EventPilot AI · Multi-Agent Event Planning</title>
+  </head>
+  <body>
+    <noscript>You need JavaScript enabled to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>

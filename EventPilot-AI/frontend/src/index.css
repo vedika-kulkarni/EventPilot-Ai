@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Theme tokens (space-separated RGB so Tailwind opacity modifiers work) */
+:root {
+  --canvas-50: 247 248 253; --canvas-100: 237 240 251; --canvas-200: 220 225 243;
+  --card: 255 255 255;
+  --brand-900: 30 27 75; --brand-800: 67 56 202; --brand-700: 79 70 229;
+  --brand-600: 99 102 241; --brand-50: 238 242 255;
+  --aura-600: 124 58 237; --aura-500: 139 92 246; --aura-400: 167 139 250; --aura-200: 221 214 254;
+  --ink: 15 23 42; --ink-mid: 71 85 105; --ink-soft: 100 116 139; --danger: 190 18 60;
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --canvas-50: 7 11 26; --canvas-100: 14 20 40; --canvas-200: 38 46 82;
+  --card: 16 23 46;
+  --brand-900: 49 46 129; --brand-800: 99 102 241; --brand-700: 129 140 248;
+  --brand-600: 165 180 252; --brand-50: 30 33 74;
+  --aura-600: 167 139 250; --aura-500: 139 92 246; --aura-400: 124 58 237; --aura-200: 221 214 254;
+  --ink: 241 245 249; --ink-mid: 176 184 204; --ink-soft: 130 140 168; --danger: 251 113 133;
+  color-scheme: dark;
+}
+
+html, body, #root { height: 100%; background-color: rgb(var(--canvas-50)); }
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  color: rgb(var(--ink));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color .25s ease, color .25s ease;
+}
+::selection { background: #8B5CF6; color: #fff; }
+
+/* Soft aurora used behind hero sections */
+.bg-aurora {
+  background:
+    radial-gradient(60% 50% at 15% 10%, rgb(99 102 241 / .22), transparent 70%),
+    radial-gradient(50% 45% at 85% 5%, rgb(139 92 246 / .20), transparent 70%);
+}
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+/* Faint dotted grid overlay everywhere — mission-control feel */
+.bg-grid {
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
+/* Subtle horizontal scan line for the hero */
+.bg-scanline {
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02) 0%,
+    rgba(255, 255, 255, 0) 100%
+  ),
+    repeating-linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.025) 0px,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+}
+
+/* Custom scrollbar — slim & technical */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0B1020;
+}
+::-webkit-scrollbar-thumb {
+  background: #1E2748;
+  border: 1px solid #2a3560;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2a3560;
+}
+
+/* Hairline border helper */
+.hairline {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.hairline-strong {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+/* Terminal-style caret blink */
+@keyframes caret {
+  50% { opacity: 0; }
+}
+.caret::after {
+  content: "▎";
+  margin-left: 2px;
+  animation: caret 1s steps(2, start) infinite;
+  color: #818CF8;
+}
+
+/* Animated SVG edge dash */
+.edge-dash {
+  stroke-dasharray: 4 4;
+  animation: edgeFlow 1.2s linear infinite;
+}
+@keyframes edgeFlow {
+  to { stroke-dashoffset: -8; }
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
